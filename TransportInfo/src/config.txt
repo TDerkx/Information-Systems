@@ -1,0 +1,5 @@
+# IS database properties
+jdbc.url=jdbc:postgresql:isdb
+user=postgres
+password=root
+jdbs.driver=org.postgresql.Driver
