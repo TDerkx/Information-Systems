@@ -9,8 +9,9 @@ CREATE TABLE hubs (
 );
 
 CREATE TABLE legs (
-  from_hub       SERIAL PRIMARY KEY REFERENCES hubs (id),
-  to_hub         SERIAL PRIMARY KEY REFERENCES hubs (id),
+  id             SERIAL PRIMARY KEY,
+  from_hub       SERIAL REFERENCES hubs (id),
+  to_hub         SERIAL REFERENCES hubs (id),
   distance       INT NOT NULL,
   avg_speed      FLOAT,
   avg_load       FLOAT,
@@ -18,12 +19,12 @@ CREATE TABLE legs (
 );
 
 CREATE TABLE subtrips (
-  id         INT PRIMARY KEY,
-  from_hub   SERIAL PRIMARY KEY REFERENCES legs (from_hub),
-  to_hub     SERIAL PRIMARY KEY REFERENCES legs (to_hub),
+  id         SERIAL PRIMARY KEY,
+  trip_id    INT       NOT NULL,
+  leg_id     SERIAL REFERENCES legs (id),
   start_date TIMESTAMP NOT NULL,
   end_date   TIMESTAMP NOT NULL,
-  duration   INT,
+  duration   INT       NOT NULL,
   load       INT       NOT NULL,
   load_time  INT
 );
