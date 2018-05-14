@@ -31,6 +31,7 @@ CREATE TABLE subtrips (
 CREATE INDEX start_idx
   ON subtrips
   USING btree (start_date);
+
 CREATE INDEX end_indx
   ON subtrips
   USING btree (end_date);
